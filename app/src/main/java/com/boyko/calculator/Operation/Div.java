@@ -9,12 +9,13 @@ public class Div extends Operation {
 
     public void exec(Stack stDoub, Stack stOp) {
 
-        Double double_up;
-        Double double_down;
+        Double double_up = (Double) stDoub.pop();
+        Double double_down = (Double) stDoub.pop();
 
-        double_up   = (Double) stDoub.pop();
-        double_down = (Double) stDoub.pop();
-        stOp.pop();
+        Character  op1 = (Character) stOp.pop();
+        Character  op2 = (Character) stOp.pop();
+        stOp.push(op1);
+
         try {
             stDoub.push(double_down / double_up);
         } catch (Exception e) {
