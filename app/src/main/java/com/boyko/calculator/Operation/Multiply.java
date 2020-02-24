@@ -12,11 +12,10 @@ public class Multiply extends Operation {
 
         Double double_up;
         Double double_down;
-        Character oper_up;
 
         double_up   = (Double) stDoub.pop();
         double_down = (Double) stDoub.pop();
-        oper_up     = (Character) stOp.pop();
+        stOp.pop();
         stDoub.push(double_down * double_up);
     }
 

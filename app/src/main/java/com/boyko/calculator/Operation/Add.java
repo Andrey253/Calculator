@@ -14,17 +14,12 @@ public class Add extends Operation{
 
         Double double_up;
         Double double_down;
-        Character oper_up;
-
-        System.out.println("my in "  + stDoub);
-        System.out.println("my in "  + stOp);
 
         double_up   = (Double) stDoub.pop();
         double_down = (Double) stDoub.pop();
-        oper_up     = (Character) stOp.pop();
+        stOp.pop();
         stDoub.push(double_down + double_up);
 
-        System.out.println("my out "  + stDoub);
-        System.out.println("my out "  + stOp);
+
     }
 }

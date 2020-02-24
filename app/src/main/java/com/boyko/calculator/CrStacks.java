@@ -10,7 +10,7 @@ public class CrStacks {
     public CrStacks(String expression) {
         this.s = expression;
 
-        s = "1-2+3/4+5";
+        s = "-1-2+3";
         int pos = s.length() - 1;
         while (pos >= 0) {
             try {
