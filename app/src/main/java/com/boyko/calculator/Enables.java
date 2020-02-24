@@ -30,7 +30,7 @@ public class Enables {
         Button.put('/', "0123456789(");
 
         Button.put(')', ")+-*/");
-        Button.put('(', "(0123456789");
+        Button.put('(', "(0123456789-");
 
         Button.put('.', "0123456789");
         ///////////////////////

@@ -1,8 +1,5 @@
 package com.boyko.calculator;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 public class Calculator {
@@ -11,16 +8,39 @@ public class Calculator {
     private Stack<Character> stackOperand = new Stack ();
     private Stack<String> stackNumbers = new Stack ();
 
-
     public Calculator(String expression) {
         this.s = expression;
-        StringBuilder sb = new StringBuilder(s);
+s="-(-11+22)*(33+44)";
+        int pos = 0;
+        while ( s.length()>0)
+        {
+            try {
+                while (Enables.Operator.contains(s.charAt(0))){
+                    if (stackNumbers.isEmpty())
+                        stackNumbers.push("0");
+                    stackOperand.push(s.charAt(0));
+                    System.out.println("my stackOperand after " + stackOperand);
+                    s = s.substring(1, s.length());
+                    System.out.println("my s oper after " + s);
+                }
+                while (Enables.Numbers.contains(s.charAt(pos))){
+                    pos++;
+                }
+                stackNumbers.push(s.substring(0, pos));
+                System.out.println("my stackNumbers After " + stackNumbers);
+                s = s.substring(pos, s.length());
+                //pos=0;
+                System.out.println("my s Num After " + s);
 
-        if (s.charAt(0) == '-')
-            stackNumbers.push("0");
-
-
-
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("my OUT");
+            }
+        }
+        System.out.println("my stackNumbers " + stackNumbers);
+        System.out.println("my stackOperand " + stackOperand);
+    }
+}
 /*        for (int pos = s.length()-1; pos > 0; pos--)
         {
             if (Character.isDigit(s.charAt(pos)) || s.charAt(pos) == '.')
@@ -30,34 +50,24 @@ public class Calculator {
                 sb.insert(pos, " ");
             }
         }*/
-        int pos = s.length()-1;
+/*
+int pos = s.length()-1;
         while ( pos >= 0)
-        {
-            try {
+                {
+                try {
                 while (Enables.Operator.contains(s.charAt(pos))){
-                    stackOperand.push(s.charAt(pos));
-                    System.out.println("my in oper " + s.charAt(pos));
-                    s = s.substring(0, pos);
-                    pos--;
-
-                    System.out.println("my s.oper " + s);
-
+                stackOperand.push(s.charAt(pos));
+                s = s.substring(0, pos);
+                pos--;
                 }
                 while (Enables.Numbers.contains(s.charAt(pos))){
-                    pos--;
+                pos--;
                 }
                 stackNumbers.push(s.substring(pos+1, s.length()));
-                System.out.println("my in dig " + s.substring(pos+1, s.length()));
                 s = s.substring(0, pos+1);
-                System.out.println("my s.dig " + s);
 
-            } catch (Exception e) {
+                } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("my OUT");
-            }
-        }
-        //stackNumbers.push(s);
-        System.out.println("my stackNumbers " + stackNumbers);
-        System.out.println("my stackOperand " + stackOperand);
-    }
-}
+                }
+                }*/
