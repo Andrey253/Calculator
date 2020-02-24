@@ -1,73 +1,61 @@
 package com.boyko.calculator;
 
 import java.util.Stack;
+import java.util.WeakHashMap;
 
 public class Calculator {
 
-    private String s;
-    private Stack<Character> stackOperand = new Stack ();
-    private Stack<String> stackNumbers = new Stack ();
+    public Stack<Double> stackDouble;
+    public Stack<Character> stackOper;
 
-    public Calculator(String expression) {
-        this.s = expression;
-s="-(-11+22)*(33+44)";
-        int pos = 0;
-        while ( s.length()>0)
-        {
-            try {
-                while (Enables.Operator.contains(s.charAt(0))){
-                    if (stackNumbers.isEmpty())
-                        stackNumbers.push("0");
-                    stackOperand.push(s.charAt(0));
-                    System.out.println("my stackOperand after " + stackOperand);
-                    s = s.substring(1, s.length());
-                    System.out.println("my s oper after " + s);
-                }
-                while (Enables.Numbers.contains(s.charAt(pos))){
-                    pos++;
-                }
-                stackNumbers.push(s.substring(0, pos));
-                System.out.println("my stackNumbers After " + stackNumbers);
-                s = s.substring(pos, s.length());
-                //pos=0;
-                System.out.println("my s Num After " + s);
+    public Calculator(Stack stacks) {
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("my OUT");
+        Double double_up;
+        Double double_down;
+        Character oper_up;
+        Character oper_down;
+        stackDouble = new Stack<>();
+        stackOper = new Stack<>();
+
+        OperationsInit operationsInit = new OperationsInit();
+
+        while (!stacks.isEmpty()){
+
+            if (stacks.peek().getClass() == Double.class){
+                stackDouble.push((Double) stacks.pop());
+            } else {
+                stackOper.push((Character) stacks.pop());
+            }
+
+            if (stackDouble.size() > 1 && stackOper.size() > 1){
+
+                double_up   = stackDouble.pop();
+                double_down = stackDouble.peek();
+                oper_up     = stackOper.pop();
+                oper_down   = stackOper.peek();
+
+                if (operationsInit.operation.get(oper_down).getPriority()
+                        >= operationsInit.operation.get(oper_up).getPriority()){
+
+                    stackDouble.push(double_up);
+                    operationsInit.operation.get(oper_down).exec(stackDouble, stackOper);
+                    stackOper.push(oper_up);
+                    //System.out.println("my stackDouble " + stackDouble);
+
+                } else {
+
+                    stackDouble.push(double_up);
+
+                    stackOper.push(oper_up);
+                }
             }
         }
-        System.out.println("my stackNumbers " + stackNumbers);
-        System.out.println("my stackOperand " + stackOperand);
+
+
+
+
+
+        //System.out.println("my stackOper " + stackOper);
+        //System.out.println("my stackNum " + stacks.stackNumbers +"         _______________");
     }
 }
-/*        for (int pos = s.length()-1; pos > 0; pos--)
-        {
-            if (Character.isDigit(s.charAt(pos)) || s.charAt(pos) == '.')
-            {
-            }else {
-                sb.insert(pos+1, " ");
-                sb.insert(pos, " ");
-            }
-        }*/
-/*
-int pos = s.length()-1;
-        while ( pos >= 0)
-                {
-                try {
-                while (Enables.Operator.contains(s.charAt(pos))){
-                stackOperand.push(s.charAt(pos));
-                s = s.substring(0, pos);
-                pos--;
-                }
-                while (Enables.Numbers.contains(s.charAt(pos))){
-                pos--;
-                }
-                stackNumbers.push(s.substring(pos+1, s.length()));
-                s = s.substring(0, pos+1);
-
-                } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("my OUT");
-                }
-                }*/

@@ -1,5 +1,7 @@
 package com.boyko.calculator.Operation;
 
+import java.util.Stack;
+
 public class Operation implements IOperation {
 
     public int priority;
@@ -9,8 +11,8 @@ public class Operation implements IOperation {
     }
 
     @Override
-    public Double exec(String s1, String s2) {
-        return null;
+    public void exec(Stack d1, Stack d2) {
+
     }
 
     @Override

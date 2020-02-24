@@ -1,13 +1,27 @@
 package com.boyko.calculator.Operation;
 
+import java.util.Stack;
+
 public class Div extends Operation {
     public Div(int priority) {
         super(priority);
     }
 
-    @Override
-    public Double exec(String s1, String s2) {
-        return Double.parseDouble(s1)/Double.parseDouble(s1);
+    public void exec(Stack stDoub, Stack stOp) {
+
+        Double double_up;
+        Double double_down;
+        Character oper_up;
+
+        double_up   = (Double) stDoub.pop();
+        double_down = (Double) stDoub.pop();
+        oper_up     = (Character) stOp.pop();
+        try {
+            stDoub.push(double_down / double_up);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // деление на ноль
+        }
     }
 
     @Override

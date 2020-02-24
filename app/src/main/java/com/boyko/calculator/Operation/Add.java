@@ -1,6 +1,6 @@
 package com.boyko.calculator.Operation;
 
-import com.boyko.calculator.Calculator;
+import java.util.Stack;
 
 public class Add extends Operation{
 
@@ -10,7 +10,21 @@ public class Add extends Operation{
     }
 
     @Override
-    public Double exec(String s1, String s2) {
-        return Double.parseDouble(s1)+Double.parseDouble(s1);
+    public void exec(Stack stDoub, Stack stOp) {
+
+        Double double_up;
+        Double double_down;
+        Character oper_up;
+
+        System.out.println("my in "  + stDoub);
+        System.out.println("my in "  + stOp);
+
+        double_up   = (Double) stDoub.pop();
+        double_down = (Double) stDoub.pop();
+        oper_up     = (Character) stOp.pop();
+        stDoub.push(double_down + double_up);
+
+        System.out.println("my out "  + stDoub);
+        System.out.println("my out "  + stOp);
     }
 }

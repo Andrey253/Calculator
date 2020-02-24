@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onClickButton(View v)
         {
-            CharIn charIn = new CharIn(tv, (Button) v);
+            new CharIn(tv, (Button) v);
         }
     public void onClickequally(View v)
         {
-            Calculator calculator = new Calculator(tv.getText().toString());
+            new CrStacks(tv.getText().toString());
         }
 }
