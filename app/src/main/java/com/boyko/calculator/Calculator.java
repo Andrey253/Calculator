@@ -24,7 +24,7 @@ public class Calculator {
 
         stackDouble = new Stack<>();
         stackOper = new Stack<>();
-
+//         System.out.println("my stack full " + stacks);
         while (!stacks.isEmpty()){
 
             if (stacks.peek().getClass() == Double.class){
@@ -32,32 +32,29 @@ public class Calculator {
             } else {
                 stackOper.push((Character) stacks.pop());
             }
-//            System.out.println("my stackOper " + stackOper);
-            if ((Character) stackOper.peek() != '('){
-               // System.out.println("my oper2 " + stackOper.peek());
-//                System.out.println("my stackOper до " + stackOper);
-//                System.out.println("my stackDouble до " + stackDouble);
-                if (stackDouble.size() > 0 && stackOper.size() > 1){ // Усли в стеке одно число, то в функции "0" ставится автоматически
 
-                    oper_up     = stackOper.pop();
-                    oper_down   = stackOper.peek();
-                    stackOper.push(oper_up);
+            if (stackOper.size() > 0 && (Character) stackOper.peek() == '('){ continue; }
+            while (stackOper.size() > 0 && (Character) stackOper.peek() == ')'){
 
-                    //System.out.println("my oper " + oper_up);
+                oper_up     = stackOper.pop();
+                oper_down   = stackOper.peek();
+                stackOper.push(oper_up);
 
-                    if (operationsInit.operation.get(oper_down).getPriority()
-                            >= operationsInit.operation.get(oper_up).getPriority()){
+                if (oper_down == '(' && oper_up == ')'){
+                    stackOper.pop();
+                    stackOper.pop();
+                } else
 
-                        operationsInit.operation.get(oper_down).exec(stackDouble, stackOper);
+                    operationsInit.operation.get(')');
+            }
 
-                    } else if (oper_up == ')' && oper_down == '('){
-                        stackOper.pop(); // delete (
-                    }
-                }
-                System.out.println("my stackOper после " + stackOper);
-                System.out.println("my stackDouble посл " + stackDouble);
+            System.out.println("my stackOper до " + stackOper);
+            System.out.println("my stackDouble до " + stackDouble);
 
-            }else continue;
+            calculator();
+
+            System.out.println("my stackOper после " + stackOper);
+            System.out.println("my stackDouble посл " + stackDouble);
         }
 
 /*        while (stackDouble.size() > 1 && stackOper.size() > 0){
@@ -72,12 +69,25 @@ public class Calculator {
         System.out.println("my result " + stackDouble);
     }
 
-    private void calc() {
+    private void calculator() {
+        if (stackDouble.size() > 0 && stackOper.size() > 1){ // Усли в стеке одно число, то в функции "0" ставится автоматически
 
+            oper_up     = stackOper.pop();
+            oper_down   = stackOper.pop();
+            System.out.println("my проверяем условие для выполнения  oper_down " + oper_down);
 
-        if (stackDouble.size() > 1 && stackOper.size() > 1 &&
-                operationsInit.operation.get(oper_down  ).getPriority() >=
-                operationsInit.operation.get(oper_up    ).getPriority())
-            calc();
+            if (operationsInit.operation.get(oper_down).getPriority()
+                    >= operationsInit.operation.get(oper_up).getPriority()){
+                System.out.println("my выполняем " + oper_down);
+                operationsInit.operation.get(oper_down).exec(stackDouble, stackOper);
+                stackOper.push(oper_up);
+
+                calculator();
+
+            } else {
+                stackOper.push(oper_down);
+                stackOper.push(oper_up);
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ public class CrStacks {
     public CrStacks(String expression) {
         this.s = expression;
 
-        s = "-11-2+3/3*5+18";
+        s = "1*1+2*2+3*3+5*6/3/2";
 
         stackObj.push('.');
 

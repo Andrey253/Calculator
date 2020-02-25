@@ -1,6 +1,5 @@
 package com.boyko.calculator.Operation;
 
-import com.boyko.calculator.CrStacks;
 import com.boyko.calculator.OperationsInit;
 
 import java.util.Stack;
@@ -14,16 +13,10 @@ public class BracketClose extends Operation {
     @Override
     public void exec(Stack stDoub, Stack stOp) {
 
-        Character  op1 = (Character) stOp.pop();
-        Character  op2 = (Character) stOp.pop();
+        Character oper = (Character) stOp.pop();
 
-        if (!(op1 == ')' && op2 == '('))
-        {
-            stOp.push(op1); //вернули закрытую скобку
-
-        } else {
-            // Считаем то что в скобке
-        }
+        OperationsInit operationsInit = new OperationsInit();
+        operationsInit.operation.get(oper).exec(stDoub, stOp);
     }
 
     @Override
