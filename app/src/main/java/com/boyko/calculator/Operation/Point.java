@@ -2,7 +2,7 @@ package com.boyko.calculator.Operation;
 
 import java.util.Stack;
 
-public class BracketOpen extends Operation {
+public class Point extends Operation {
     @Override
     public void exec(Stack d1, Stack d2) {
 
@@ -13,7 +13,7 @@ public class BracketOpen extends Operation {
         return super.getPriority();
     }
 
-    public BracketOpen(int priority) {
+    public Point(int priority) {
         super(priority);
     }
 }

@@ -7,6 +7,7 @@ import com.boyko.calculator.Operation.Div;
 import com.boyko.calculator.Operation.IOperation;
 import com.boyko.calculator.Operation.Minus;
 import com.boyko.calculator.Operation.Multiply;
+import com.boyko.calculator.Operation.Point;
 
 import java.util.HashMap;
 
@@ -20,8 +21,9 @@ public  class OperationsInit {
         operation2.put('-', new Minus(1));
         operation2.put('*', new Multiply(2));
         operation2.put('/', new Div(2));
-        operation2.put('(', new BracketOpen(10));
-        operation2.put('(', new BracketClose(-10));
+        operation2.put('(', new BracketOpen(0));
+        operation2.put(')', new BracketClose(0));
+        operation2.put('.', new Point(-5));
         this.operation = operation2;
     }
 }

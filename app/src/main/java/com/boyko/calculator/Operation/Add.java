@@ -12,18 +12,15 @@ public class Add extends Operation{
     @Override
     public void exec(Stack stDoub, Stack stOp) {
 
-        Double double_up;
+
+        Double double_up   = (Double) stDoub.pop();
         Double double_down;
-        Character  op1 = (Character) stOp.pop();
         try {
-            Character  op2 = (Character) stOp.pop();
+            double_down = (Double) stDoub.pop();
         } catch (Exception e) {
             e.printStackTrace();
+            double_down = 0.0;
         }
-        stOp.push(op1);
-
-        double_up   = (Double) stDoub.pop();
-        double_down = (Double) stDoub.pop();
 
         stDoub.push(double_down + double_up);
     }

@@ -12,10 +12,6 @@ public class Div extends Operation {
         Double double_up = (Double) stDoub.pop();
         Double double_down = (Double) stDoub.pop();
 
-        Character  op1 = (Character) stOp.pop();
-        Character  op2 = (Character) stOp.pop();
-        stOp.push(op1);
-
         try {
             stDoub.push(double_down / double_up);
         } catch (Exception e) {

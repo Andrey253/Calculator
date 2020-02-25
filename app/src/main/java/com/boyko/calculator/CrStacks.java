@@ -12,6 +12,9 @@ public class CrStacks {
         this.s = expression;
 
         s = "-11-2+3/3*5+18";
+
+        stackObj.push('.');
+
         int pos = s.length() - 1;
         while (pos >= 0) {
             try {
