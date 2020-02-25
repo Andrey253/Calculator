@@ -21,7 +21,7 @@ public  class OperationsInit {
         operation2.put('-', new Minus(1));
         operation2.put('*', new Multiply(2));
         operation2.put('/', new Div(2));
-        operation2.put('(', new BracketOpen(5));
+        operation2.put('(', new BracketOpen(-2));
         operation2.put(')', new BracketClose(0));
         operation2.put('.', new Point(-5));
         this.operation = operation2;

@@ -11,24 +11,20 @@ public class CrStacks {
 
     public CrStacks(String expression) {
         this.s = expression;
-
-        s = "u11+22-33";
+        stackObj.push('.');
+        s = " (11+22)-32";
         int pos = s.length() - 1;
         while (pos >= 0) {
+
             if (!Enables.Operator.contains(s.charAt(pos)) && !Enables.Numbers.contains(s.charAt(pos))) break;
 
-            System.out.println("my  s.length()1 " + s.length());
-            System.out.println("my  pos1 " + pos);
-
-            if (Enables.Operator.contains(s.charAt(pos))) {
+            while (Enables.Operator.contains(s.charAt(pos))) {
                 stackObj.push(s.charAt(pos));
                 s = s.substring(0, pos);
-                if (pos == 0) break;
                 pos--;
             }
-            System.out.println("my stackObj1 " + stackObj);
-            System.out.println("my  s.length()2 " + s.length());
-            System.out.println("my  pos2 " + pos);
+
+            if (!Enables.Operator.contains(s.charAt(pos)) && !Enables.Numbers.contains(s.charAt(pos))) break;
 
             while ( Enables.Numbers.contains(s.charAt(pos))) {
                 pos--;
@@ -36,13 +32,8 @@ public class CrStacks {
 
             stackObj.push(Double.parseDouble(s.substring(pos+1 , s.length())));
             s = s.substring(0, pos+1 );
-            System.out.println("my stackObj2 " + stackObj);
         }
-
-
-
-            //new Calculator(stackObj);
-
+            new Calculator(stackObj);
     }
 }
 /*      Сборка строки с разделителем ПРОБЕЛ между символами
