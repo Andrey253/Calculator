@@ -7,34 +7,42 @@ public class CrStacks {
     public Calculator calculator;
     private String s;
     public Stack<Object> stackObj = new Stack<>();
+    private StringBuilder sb;
 
     public CrStacks(String expression) {
         this.s = expression;
 
-        s = "1*1+2*2+3*3+5*6/3/2";
-
-        stackObj.push('.');
-
+        s = "u11+22-33";
         int pos = s.length() - 1;
         while (pos >= 0) {
-            try {
-                while (Enables.Operator.contains(s.charAt(pos))) {
-                    stackObj.push(s.charAt(pos));
-                    s = s.substring(0, pos);
-                    pos--;
-                }
-                while (pos >= 0 && Enables.Numbers.contains(s.charAt(pos))) {
-                    pos--;
-                }
-                stackObj.push(Double.parseDouble(s.substring(pos + 1, s.length())));
-                s = s.substring(0, pos + 1);
+            if (!Enables.Operator.contains(s.charAt(pos)) && !Enables.Numbers.contains(s.charAt(pos))) break;
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("my OUT");
+            System.out.println("my  s.length()1 " + s.length());
+            System.out.println("my  pos1 " + pos);
+
+            if (Enables.Operator.contains(s.charAt(pos))) {
+                stackObj.push(s.charAt(pos));
+                s = s.substring(0, pos);
+                if (pos == 0) break;
+                pos--;
             }
+            System.out.println("my stackObj1 " + stackObj);
+            System.out.println("my  s.length()2 " + s.length());
+            System.out.println("my  pos2 " + pos);
+
+            while ( Enables.Numbers.contains(s.charAt(pos))) {
+                pos--;
+            }
+
+            stackObj.push(Double.parseDouble(s.substring(pos+1 , s.length())));
+            s = s.substring(0, pos+1 );
+            System.out.println("my stackObj2 " + stackObj);
         }
-        calculator = new Calculator(stackObj);
+
+
+
+            //new Calculator(stackObj);
+
     }
 }
 /*      Сборка строки с разделителем ПРОБЕЛ между символами
@@ -74,3 +82,29 @@ int pos = 0;
         System.out.println("my stackOperand " + stackOperand);
         System.out.println("my stackObj " + stackObj);
 }*/
+
+/*        int pos = s.length() - 1;
+        while (pos >= 0) {
+            System.out.println("my  s.length()1 " + s.length());
+            System.out.println("my  pos1 " + pos);
+
+                if (Enables.Operator.contains(s.charAt(pos))) {
+                    stackObj.push(s.charAt(pos));
+                    s = s.substring(0, pos);
+                    if (pos == 0) break;
+                    pos--;
+                }
+            System.out.println("my stackObj1 " + stackObj);
+            System.out.println("my  s.length()2 " + s.length());
+            System.out.println("my  pos2 " + pos);
+
+                while ( Enables.Numbers.contains(s.charAt(pos))) {
+                    if (pos == 0) break;
+                    pos--;
+                }
+
+                stackObj.push(Double.parseDouble(s.substring(pos , s.length())));
+                s = s.substring(0, pos+1 );
+            System.out.println("my stackObj2 " + stackObj);
+
+        }*/

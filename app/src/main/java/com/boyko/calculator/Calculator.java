@@ -1,6 +1,5 @@
 package com.boyko.calculator;
 
-import com.boyko.calculator.Operation.BracketOpen;
 import com.boyko.calculator.Operation.IOperation;
 
 import java.util.Stack;
@@ -48,13 +47,13 @@ public class Calculator {
                     operationsInit.operation.get(')');
             }
 
-            System.out.println("my stackOper до " + stackOper);
-            System.out.println("my stackDouble до " + stackDouble);
+//            System.out.println("my stackOper до " + stackOper);
+//            System.out.println("my stackDouble до " + stackDouble);
 
             calculator();
 
-            System.out.println("my stackOper после " + stackOper);
-            System.out.println("my stackDouble посл " + stackDouble);
+//            System.out.println("my stackOper после " + stackOper);
+//            System.out.println("my stackDouble посл " + stackDouble);
         }
 
 /*        while (stackDouble.size() > 1 && stackOper.size() > 0){
@@ -65,8 +64,8 @@ public class Calculator {
         }*/
 
         this.result = stackDouble.peek();
-        System.out.println("my result " + this.getResult());
-        System.out.println("my result " + stackDouble);
+//        System.out.println("my result " + this.getResult());
+//        System.out.println("my result " + stackDouble);
     }
 
     private void calculator() {
