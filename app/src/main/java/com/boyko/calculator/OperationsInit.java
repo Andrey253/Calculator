@@ -17,12 +17,12 @@ public  class OperationsInit {
 
     public OperationsInit() {
         HashMap<Character, IOperation> operation2 = new HashMap<>();
-        operation2.put('+', new Add(1));
-        operation2.put('-', new Minus(1));
-        operation2.put('*', new Multiply(2));
-        operation2.put('/', new Div(2));
-        operation2.put('(', new BracketOpen(-2));
-        operation2.put(')', new BracketClose(0));
+        operation2.put('+', new Add(2));
+        operation2.put('-', new Minus(2));
+        operation2.put('*', new Multiply(3));
+        operation2.put('/', new Div(3));
+        operation2.put('(', new BracketOpen(1));
+        operation2.put(')', new BracketClose(1));
         operation2.put('.', new Point(-5));
         this.operation = operation2;
     }

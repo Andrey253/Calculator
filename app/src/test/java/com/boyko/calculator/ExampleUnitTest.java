@@ -17,12 +17,12 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrec() {
 
-        CrStacks crst = new CrStacks(" 33-30+7");
+        CrStacks crst = new CrStacks(" (33-30)-6");
 
-System.out.println(" my st " + crst.stackObj2);
+System.out.println(" my st " + crst.stackObj);
 
-        Double d = new Calculator(crst.stackObj2).getResult();
+        Double d = new Calculator(crst.stackObj).getResult();
 
-        Assert.assertEquals(10, d,0.2);
+        Assert.assertEquals(-3, d,0.2);
     }
 }

@@ -7,14 +7,12 @@ public class CrStacks {
     public Calculator calculator;
     private String s;
     public Stack<Object> stackObj = new Stack<>();
-    public Stack<Object> stackObj2= new Stack<>();
     private StringBuilder sb;
 
     public CrStacks(String expression) {
         this.s = expression;
+        //s = " (33-30)";
         stackObj.push('.');
-        stackObj2.push('.');
-        //s = " (11+22)-32";
         int pos = s.length() - 1;
         while (pos >= 0) {
 
@@ -22,7 +20,6 @@ public class CrStacks {
 
             while (Enables.Operator.contains(s.charAt(pos))) {
                 stackObj.push(s.charAt(pos));
-                stackObj2.push(s.charAt(pos));
                 s = s.substring(0, pos);
                 pos--;
             }
@@ -34,11 +31,10 @@ public class CrStacks {
             }
 
             stackObj.push(Double.parseDouble(s.substring(pos+1 , s.length())));
-            stackObj2.push(Double.parseDouble(s.substring(pos+1 , s.length())));
             s = s.substring(0, pos+1 );
         }
 
-        new Calculator(stackObj);
+        //new Calculator(stackObj);
     }
 }
 /*      Сборка строки с разделителем ПРОБЕЛ между символами

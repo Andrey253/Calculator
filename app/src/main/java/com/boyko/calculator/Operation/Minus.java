@@ -17,7 +17,7 @@ public class Minus extends Operation{
         Double double_down;
 
         double_up   = (Double) stDoub.pop();
-        System.out.println("my stack zise  " + stDoub.size());
+
         if (stDoub.size() > 0){
 
             double_down = (Double) stDoub.pop();
@@ -27,12 +27,8 @@ public class Minus extends Operation{
         } else {
 
             double_down = 0.0;
-             System.out.println("my выполняем вычитание " + double_down+" - "+double_up);
 
             stDoub.push(double_down - double_up);
         }
-
-
-
     }
 }
