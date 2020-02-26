@@ -1,4 +1,4 @@
-package com.boyko.calculator;
+package com.boyko.calculator.Enum;
 
 import java.util.ArrayList;
 import java.util.HashMap;

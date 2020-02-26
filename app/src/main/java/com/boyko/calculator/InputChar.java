@@ -3,9 +3,11 @@ package com.boyko.calculator;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class CharIn {
+import com.boyko.calculator.Enum.Enables;
 
-    public CharIn(TextView tv, Button b) {
+public class InputChar {
+
+    public InputChar(TextView tv, Button b) {
 
         if (b.getText().toString().contains("=")){
 

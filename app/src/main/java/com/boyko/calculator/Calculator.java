@@ -1,6 +1,6 @@
 package com.boyko.calculator;
 
-import com.boyko.calculator.Operation.IOperation;
+import com.boyko.calculator.Enum.OperationsInit;
 
 import java.util.Stack;
 
@@ -30,24 +30,23 @@ public class Calculator {
                 stackOper.push((Character) stacks.pop());
             }
 
-            if (stackOper.size() > 0 && (Character) stackOper.peek() == '('){ continue; }
-            while (stackOper.size() > 0 && (Character) stackOper.peek() == ')'){
+            if (stackOper.size() > 0 && stackOper.peek() == '('){ continue; }
+            while (stackOper.size() > 0 && stackOper.peek() == ')'){
 
                 oper_up     = stackOper.pop();
-                oper_down   = stackOper.peek();
+
+                if (stackOper.size() != 0) oper_down   = stackOper.peek();
 
                 if (oper_down == '(' && oper_up == ')'){
-
-                    stackOper.pop();
+                    if (stackOper.size() != 0) stackOper.pop();
                 } else{
                     oper_down = stackOper.pop();
                     operationsInit.operation.get(oper_down).exec(stackDouble,stackOper);
                     stackOper.push(oper_up);
                 }
             }
-            calculator();
 
-            System.out.println("my stackDouble посл " + stackDouble);
+            calculator();
         }
         this.result = stackDouble.peek();
     }
