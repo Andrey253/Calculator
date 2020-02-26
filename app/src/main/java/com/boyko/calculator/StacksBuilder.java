@@ -7,9 +7,8 @@ import java.util.Stack;
 public class StacksBuilder {
 
     private String s;
-    public Stack<Object> stackObj = new Stack<>();
-
-    public StacksBuilder(String expression) {
+        public Stack<Object> stackObj = new Stack<>();
+        public StacksBuilder(String expression) {
         this.s = " " + expression;
         stackObj.push('.');
 

@@ -18,14 +18,13 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrec() {
 
-        StacksBuilder crst = new StacksBuilder(" -((((3-30/15)/(4-8/4))))");
-
-System.out.println(" my st " + crst.stackObj);
+        StacksBuilder crst = new StacksBuilder(" -((((((((((((((4-30/15))))/((((4-8/4))))))))))))))");
 
         Double d = new Calculator(crst.stackObj).getResult();
 
-        Assert.assertEquals(-0.5, d,0.1);
+        Assert.assertEquals(-1.0, d,0.1);
     }
+
     @Test
     public void add() {
 
