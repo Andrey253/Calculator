@@ -1,5 +1,10 @@
 package com.boyko.calculator;
 
+import android.app.Application;
+import android.content.Context;
+import android.widget.Button;
+import android.widget.TextView;
+
 import com.boyko.calculator.Operation.Add;
 import com.boyko.calculator.Operation.IOperation;
 
@@ -7,6 +12,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Stack;
+
+import static com.boyko.calculator.R.string.dev;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -18,7 +25,7 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrec() {
 
-        StacksBuilder crst = new StacksBuilder(" -((((((((((((((4-30/15))))/((((4-8/4))))))))))))))");
+        StacksBuilder crst = new StacksBuilder(" -((((4-30/15))))/(4-8/4)");
 
         Double d = new Calculator(crst.stackObj).getResult();
 
@@ -38,5 +45,19 @@ public class ExampleUnitTest {
         add.exec(sd,sd);
 
         Assert.assertEquals(3.0, sd.peek(),0.1);
+    }
+    @Test
+    public void buttonIsOperator() {
+
+        InputChar inputChar = new InputChar("5", ".");
+
+        Assert.assertEquals(true, inputChar.last_simbol_is_operator);
+    }
+    @Test
+    public void countBracket() {
+
+        InputChar inputChar = new InputChar("((6-9", ")");
+
+        Assert.assertEquals(1, inputChar.dif_count_bracket);
     }
 }

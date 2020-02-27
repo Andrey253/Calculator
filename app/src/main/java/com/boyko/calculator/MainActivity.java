@@ -10,8 +10,10 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv;
+    private Button button;
     private StacksBuilder stacksBuilder;
     private Calculator calculator;
+    private InputChar inputChar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +24,13 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onClickButton(View v)
         {
-            new InputChar(tv, (Button) v);
+            button = (Button) v;
+            inputChar = new InputChar(tv.getText().toString(), button.getText().toString());
+            tv.setText(inputChar.inputChar);
         }
     public void onClickequally(View v)
         {
+            int ccbr = inputChar.dif_count_bracket;
             stacksBuilder = new StacksBuilder(tv.getText().toString());
             calculator = new Calculator(stacksBuilder.stackObj);
             tv.setText(calculator.getResult().toString());

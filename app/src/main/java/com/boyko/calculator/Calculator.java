@@ -6,12 +6,12 @@ import java.util.Stack;
 
 public class Calculator {
 
-    private Double result;
     public Stack<Double> stackDouble;
     public Stack<Character> stackOper;
-    Character oper_up;
-    Character oper_down;
-    OperationsInit operationsInit = new OperationsInit();
+    private Double result;
+    private Character oper_up;
+    private Character oper_down;
+    private OperationsInit operationsInit = new OperationsInit();
 
     public Double getResult() {
         return result;
