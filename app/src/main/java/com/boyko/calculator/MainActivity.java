@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView tv;
+    private TextView tv;
+    private StacksBuilder stacksBuilder;
+    private Calculator calculator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,14 +19,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tv = findViewById(R.id.textView);
-
     }
     public void onClickButton(View v)
         {
-            new CharIn(tv, (Button) v);
+            new InputChar(tv, (Button) v);
         }
     public void onClickequally(View v)
         {
-            new CrStacks(tv.getText().toString());
+            stacksBuilder = new StacksBuilder(tv.getText().toString());
+            calculator = new Calculator(stacksBuilder.stackObj);
+            tv.setText(calculator.getResult().toString());
         }
 }

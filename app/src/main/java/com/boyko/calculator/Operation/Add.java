@@ -12,7 +12,6 @@ public class Add extends Operation{
     @Override
     public void exec(Stack stDoub, Stack stOp) {
 
-
         Double double_up   = (Double) stDoub.pop();
         Double double_down;
         try {
