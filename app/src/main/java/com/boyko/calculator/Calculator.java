@@ -31,19 +31,21 @@ public class Calculator {
             }
 
             if (stackOper.size() > 0 && stackOper.peek() == '('){ continue; }
-            while (stackOper.size() > 0 && stackOper.peek() == ')'){
 
-                oper_up     = stackOper.pop();
+            while (stackOper.size() > 0){ // Если есть скобка ), то будет и второй оператор в стеке
+                if (stackOper.peek() == ')'){
+                    oper_up     = stackOper.pop();
+                    oper_down   = stackOper.peek();
 
-                if (stackOper.size() != 0) oper_down   = stackOper.peek();
+                    if (oper_down == '(' && oper_up == ')'){
+                        stackOper.pop();
+                    } else{
+                        oper_down = stackOper.pop();
+                        operationsInit.operation.get(oper_down).exec(stackDouble,stackOper);
+                        stackOper.push(oper_up);
+                    }
+                } else break;
 
-                if (oper_down == '(' && oper_up == ')'){
-                    if (stackOper.size() != 0) stackOper.pop();
-                } else{
-                    oper_down = stackOper.pop();
-                    operationsInit.operation.get(oper_down).exec(stackDouble,stackOper);
-                    stackOper.push(oper_up);
-                }
             }
 
             calculator();
