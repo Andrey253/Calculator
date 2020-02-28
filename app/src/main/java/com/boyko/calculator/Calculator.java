@@ -60,7 +60,8 @@ public class Calculator {
             oper_down   = stackOper.pop();
 
             if (operationsInit.operation.get(oper_down).getPriority()
-                    >= operationsInit.operation.get(oper_up).getPriority()){
+                    >= operationsInit.operation.get(oper_up).getPriority()
+            && oper_down != '('){
 
                 operationsInit.operation.get(oper_down).exec(stackDouble, stackOper);
                 stackOper.push(oper_up);
