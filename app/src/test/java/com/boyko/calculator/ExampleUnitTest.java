@@ -25,11 +25,11 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrec() {
 
-        StacksBuilder stackinput = new StacksBuilder(" -((((4-30/15))))/(4-8/4)");
+        StacksBuilder stackinput = new StacksBuilder(" ((((4-30/15)-1)*8)/8)");
 
         Double d = new Calculator(stackinput.stackinput).getResult();
 
-        Assert.assertEquals(-1.0, d,0.1);
+        Assert.assertEquals(1.0, d,0.1);
     }
 
     @Test
