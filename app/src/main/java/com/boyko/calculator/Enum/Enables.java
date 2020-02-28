@@ -9,6 +9,7 @@ public class Enables {
     public static Map<Character, String> Button;
     public static List<Character> Numbers;
     public static List<Character> Operator;
+    public static List<Character> CalcOperator;
 
     static {
         Button = new HashMap<>();
@@ -33,7 +34,6 @@ public class Enables {
         Button.put('(', "(0123456789-");
 
         Button.put('.', "0123456789");
-        ///////////////////////
 
         Numbers = new ArrayList<>();
         Numbers.add('0');
@@ -56,6 +56,10 @@ public class Enables {
         Operator.add('(');
         Operator.add(')');
 
-
+        CalcOperator = new ArrayList<>();
+        CalcOperator.add('+');
+        CalcOperator.add('-');
+        CalcOperator.add('*');
+        CalcOperator.add('/');
     }
 }

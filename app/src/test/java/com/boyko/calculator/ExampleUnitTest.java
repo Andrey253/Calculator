@@ -25,9 +25,9 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrec() {
 
-        StacksBuilder crst = new StacksBuilder(" -((((4-30/15))))/(4-8/4)");
+        StacksBuilder stackinput = new StacksBuilder(" -((((4-30/15))))/(4-8/4)");
 
-        Double d = new Calculator(crst.stackObj).getResult();
+        Double d = new Calculator(stackinput.stackinput).getResult();
 
         Assert.assertEquals(-1.0, d,0.1);
     }
@@ -49,7 +49,7 @@ public class ExampleUnitTest {
     @Test
     public void buttonIsOperator() {
 
-        InputChar inputChar = new InputChar("5", ".");
+        InputChar inputChar = new InputChar("5", "/");
 
         Assert.assertEquals(true, inputChar.last_simbol_is_operator);
     }
