@@ -143,7 +143,7 @@
         android:layout_gravity="fill"
         android:layout_columnSpan="2"
         android:id="@+id/btnequally"
-        android:onClick="onClickequally"
+        android:onClick="onClickEqually"
         android:textSize="36sp" />
     <Button
         android:text="cl"

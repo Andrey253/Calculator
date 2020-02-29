@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             inpStringThis =inputChar.inputString;
             tv.setText(inpStringThis);
         }
-    public void onClickequally(View v)
+    public void onClickEqually(View v)
         {
            error = new Error(inpStringThis, inputChar.dif_count_bracket);
 
