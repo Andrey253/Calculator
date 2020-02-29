@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class BracketOpen extends Operation {
     @Override
-    public void exec(Stack d1, Stack d2) {
+    public void exec(Stack stDouble) {
 
     }
 

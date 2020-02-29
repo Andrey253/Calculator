@@ -32,7 +32,10 @@ public class InputChar {
 
         } else if (textbutton.contains("cl")){
             inputString =  "";
-        } else if (textbutton.contains("back")) {
+        } else if (textbutton.contains(".") && tvstring.length() == 0){
+            String s = "0.";
+        }
+        else if (textbutton.contains("back")) {
 
             String s = tvstring;
 

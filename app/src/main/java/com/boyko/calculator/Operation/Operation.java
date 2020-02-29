@@ -11,7 +11,7 @@ public class Operation implements IOperation {
     }
 
     @Override
-    public void exec(Stack d1, Stack d2) {
+    public void exec(Stack d1) {
 
     }
 

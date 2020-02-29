@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public interface IOperation {
 
-    void exec(Stack s1, Stack s2);
+    void exec(Stack s1);
 
     int getPriority();
 }

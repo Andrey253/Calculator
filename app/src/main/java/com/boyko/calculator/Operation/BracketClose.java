@@ -11,7 +11,7 @@ public class BracketClose extends Operation {
     }
 
     @Override
-    public void exec(Stack stDoub, Stack stOp) {
+    public void exec(Stack stDouble) {
 
     }
 

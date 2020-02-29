@@ -6,8 +6,8 @@ import java.util.Stack;
 
 public class Calculator {
 
-    public Stack<Double> stackDouble;
-    public Stack<Character> stackOperations;
+    private Stack<Double> stackDouble;
+    private Stack<Character> stackOperations;
     private Double result;
     private Character first_operation;
     private Character second_operation;
@@ -31,6 +31,7 @@ public class Calculator {
             }
             calculator();
         }
+        if (stackDouble.size() !=0)
         this.result = stackDouble.peek();
     }
 
@@ -48,7 +49,7 @@ public class Calculator {
             }
             else if (operationsInit.operation.get(second_operation).getPriority()
                     >= operationsInit.operation.get(first_operation).getPriority()) {
-                operationsInit.operation.get(second_operation).exec(stackDouble, stackOperations);
+                operationsInit.operation.get(second_operation).exec(stackDouble);
                 stackOperations.push(first_operation);
                 calculator();
             }

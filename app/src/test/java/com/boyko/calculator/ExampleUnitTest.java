@@ -1,11 +1,6 @@
 package com.boyko.calculator;
 
-import android.app.Application;
-import android.content.Context;
-import android.widget.Button;
-import android.widget.TextView;
-
-import com.boyko.calculator.Operation.Add;
+import com.boyko.calculator.Operation.Calc.Add;
 import com.boyko.calculator.Operation.IOperation;
 
 import org.junit.Assert;
@@ -13,13 +8,6 @@ import org.junit.Test;
 
 import java.util.Stack;
 
-import static com.boyko.calculator.R.string.dev;
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 public class ExampleUnitTest {
 
     @Test
@@ -30,6 +18,16 @@ public class ExampleUnitTest {
         Double d = new Calculator(stackinput.stackinput).getResult();
 
         Assert.assertEquals(-5.0, d,0.1);
+    }
+
+    @Test
+    public void nullException() {
+
+        StacksBuilder stackinput = new StacksBuilder(" 5/0.0");
+
+        Double d = new Calculator(stackinput.stackinput).getResult();
+
+        Assert.assertEquals("Деление на ноль","Деление на ноль" );
     }
     @Test
     public void addition_isCorrect2() {
@@ -51,7 +49,7 @@ public class ExampleUnitTest {
         sd.push(2.0);
         so.push('+');
 
-        add.exec(sd,sd);
+        add.exec(sd);
 
         Assert.assertEquals(3.0, sd.peek(),0.1);
     }
@@ -68,5 +66,14 @@ public class ExampleUnitTest {
         InputChar inputChar = new InputChar("((6-9", ")");
 
         Assert.assertEquals(1, inputChar.dif_count_bracket);
+    }
+    @Test
+    public void stringToStack() {
+
+        StacksBuilder stackinput = new StacksBuilder(" 0");
+
+        Double d = new Calculator(stackinput.stackinput).getResult();
+
+        Assert.assertEquals(0.0, d,0.1);
     }
 }
