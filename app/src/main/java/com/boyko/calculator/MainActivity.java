@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClickEqually(View v)
         {
            error = new Error(inpStringThis, inputChar.dif_count_bracket);
+
           if (error.isNotErrors())
            {
                 stacksBuilder = new StacksBuilder(tv.getText().toString());
