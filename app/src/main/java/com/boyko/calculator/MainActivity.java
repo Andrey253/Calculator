@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
         {
             button = (Button) v;
             inputChar = new InputChar(tv.getText().toString(), button.getText().toString());
-            inpStringThis =inputChar.inputString;
+            inpStringThis =inputChar.getInputString();
             tv.setText(inpStringThis);
         }
     public void onClickEqually(View v)
         {
-           error = new Error(inpStringThis, inputChar.dif_count_bracket);
+           error = new Error(inpStringThis, inputChar.getDif_count_bracket());
 
           if (error.isNotErrors())
            {

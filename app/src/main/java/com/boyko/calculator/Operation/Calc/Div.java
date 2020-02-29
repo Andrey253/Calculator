@@ -23,9 +23,8 @@ public class Div extends Operation {
             else{
                 stDouble.push(double_down / 0.00000001);
 
-                MainActivity.tvError.setText("Деление на ноль");
+//                MainActivity.tvError.setText("Деление на ноль");
             }
-
     }
 
     @Override

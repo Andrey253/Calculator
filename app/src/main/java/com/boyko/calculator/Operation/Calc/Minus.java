@@ -19,14 +19,7 @@ public class Minus extends Operation {
         Double double_down;
 
         double_up   = (Double) stDouble.pop();
-
-        if (stDouble.size() > 0){
-            double_down = (Double) stDouble.pop();
-
-        } else {
-            double_down = 0.0;
-        }
-
+        double_down = (stDouble.size() > 0) ? (Double) stDouble.pop() : 0.0;
         stDouble.push(double_down - double_up);
     }
 }

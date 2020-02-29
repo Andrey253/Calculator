@@ -58,14 +58,14 @@ public class ExampleUnitTest {
 
         InputChar inputChar = new InputChar("5", "/");
 
-        Assert.assertEquals(true, inputChar.last_simbol_is_operator);
+        Assert.assertEquals(true, inputChar.isLastCharOperator());
     }
     @Test
     public void countBracket() {
 
         InputChar inputChar = new InputChar("((6-9", ")");
 
-        Assert.assertEquals(1, inputChar.dif_count_bracket);
+        Assert.assertEquals(1, inputChar.getDif_count_bracket());
     }
     @Test
     public void stringToStack() {
