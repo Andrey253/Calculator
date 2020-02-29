@@ -23,7 +23,7 @@ public  class OperationsInit {
         operation2.put('/', new Div(3));
         operation2.put('(', new BracketOpen(1));
         operation2.put(')', new BracketClose(1));
-        operation2.put('.', new Point(-5));
+        operation2.put('.', new Point(0));
         this.operation = operation2;
     }
 }

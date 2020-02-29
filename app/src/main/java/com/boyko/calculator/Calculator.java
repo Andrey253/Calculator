@@ -7,10 +7,10 @@ import java.util.Stack;
 public class Calculator {
 
     public Stack<Double> stackDouble;
-    public Stack<Character> stackOper;
+    public Stack<Character> stackOperations;
     private Double result;
-    private Character oper_up;
-    private Character oper_down;
+    private Character first_operation;
+    private Character second_operation;
     private OperationsInit operationsInit = new OperationsInit();
 
     public Double getResult() {
@@ -20,32 +20,29 @@ public class Calculator {
     public Calculator(Stack stacks) {
 
         stackDouble = new Stack<>();
-        stackOper = new Stack<>();
+        stackOperations = new Stack<>();
 
         while (!stacks.isEmpty()){
 
             if (stacks.peek().getClass() == Double.class){
                 stackDouble.push((Double) stacks.pop());
             } else {
-                stackOper.push((Character) stacks.pop());
+                stackOperations.push((Character) stacks.pop());
             }
 
-            if (stackOper.size() > 0 && stackOper.peek() == '('){ continue; }
+            while (stackOperations.size() > 0){ // Если есть скобка ), то будет и второй оператор в стеке
+                if (stackOperations.peek() == ')'){
+                    first_operation     = stackOperations.pop();
+                    second_operation   = stackOperations.peek();
 
-            while (stackOper.size() > 0){ // Если есть скобка ), то будет и второй оператор в стеке
-                if (stackOper.peek() == ')'){
-                    oper_up     = stackOper.pop();
-                    oper_down   = stackOper.peek();
-
-                    if (oper_down == '(' && oper_up == ')'){
-                        stackOper.pop();
+                    if (second_operation == '(' && first_operation == ')'){
+                        stackOperations.pop();
                     } else{
-                        oper_down = stackOper.pop();
-                        operationsInit.operation.get(oper_down).exec(stackDouble,stackOper);
-                        stackOper.push(oper_up);
+                        second_operation = stackOperations.pop();
+                        operationsInit.operation.get(second_operation).exec(stackDouble,stackOperations);
+                        stackOperations.push(first_operation);
                     }
                 } else break;
-
             }
 
             calculator();
@@ -54,23 +51,23 @@ public class Calculator {
     }
 
     private void calculator() {
-        if (stackDouble.size() > 0 && stackOper.size() > 1){ // Усли в стеке одно число, то в функции "0" ставится автоматически
+        if (stackDouble.size() > 0 && stackOperations.size() > 1){ // Усли в стеке одно число, то в функции "0" ставится автоматически
 
-            oper_up     = stackOper.pop();
-            oper_down   = stackOper.pop();
+            first_operation     = stackOperations.pop();
+            second_operation   = stackOperations.pop();
 
-            if (operationsInit.operation.get(oper_down).getPriority()
-                    >= operationsInit.operation.get(oper_up).getPriority()
-            && oper_down != '('){
+            if (operationsInit.operation.get(second_operation).getPriority()
+                    >= operationsInit.operation.get(first_operation).getPriority()
+            && second_operation != '('){
 
-                operationsInit.operation.get(oper_down).exec(stackDouble, stackOper);
-                stackOper.push(oper_up);
+                operationsInit.operation.get(second_operation).exec(stackDouble, stackOperations);
+                stackOperations.push(first_operation);
 
                 calculator();
 
             } else {
-                stackOper.push(oper_down);
-                stackOper.push(oper_up);
+                stackOperations.push(second_operation);
+                stackOperations.push(first_operation);
             }
         }
     }
