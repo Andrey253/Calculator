@@ -25,20 +25,20 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
 
-        StacksBuilder stackinput = new StacksBuilder(" -((((4-30/15+6/3-1-1+30/15-1*2)-1)*8-4)/4)");
+        StacksBuilder stackinput = new StacksBuilder(" (5-2*(3/((4-30/15+6/3-1-1+30/15-1*2)-1)*8-4)/4)");
 
         Double d = new Calculator(stackinput.stackinput).getResult();
 
-        Assert.assertEquals(-1.0, d,0.1);
+        Assert.assertEquals(-5.0, d,0.1);
     }
     @Test
     public void addition_isCorrect2() {
 
-        StacksBuilder stackinput = new StacksBuilder(" 2+3");
+        StacksBuilder stackinput = new StacksBuilder(" (2+3)*(2+2)");
 
         Double d = new Calculator(stackinput.stackinput).getResult();
 
-        Assert.assertEquals(5.0, d,0.1);
+        Assert.assertEquals(20.0, d,0.1);
     }
 
     @Test

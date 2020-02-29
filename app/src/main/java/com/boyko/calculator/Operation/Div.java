@@ -1,5 +1,7 @@
 package com.boyko.calculator.Operation;
 
+import com.boyko.calculator.MainActivity;
+
 import java.util.Stack;
 
 public class Div extends Operation {
@@ -16,7 +18,7 @@ public class Div extends Operation {
             stDoub.push(double_down / double_up);
         } catch (Exception e) {
             e.printStackTrace();
-            // деление на ноль
+            MainActivity.tvError.setText("Деление на ноль");
         }
     }
 

@@ -12,12 +12,13 @@ import com.boyko.calculator.Enum.Enables;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv;
-    private TextView tvError;
+    public static TextView tvError;
     private Button button;
     private StacksBuilder stacksBuilder;
     private Calculator calculator;
     private InputChar inputChar;
     private String inpStringThis;
+    private Error error;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +37,13 @@ public class MainActivity extends AppCompatActivity {
         }
     public void onClickequally(View v)
         {
-            if (inputChar.dif_count_bracket != 0){
-                tvError.setText("не хватает скобок: "+inputChar.dif_count_bracket+" штук");
-            }else if (Enables.CalcOperator.contains(inpStringThis.charAt(inpStringThis.length()-1))){
-                tvError.setText("последний символ оператор, завершите выражение");
-            }
-            else {
+           error = new Error(inpStringThis, inputChar.dif_count_bracket);
+
+           if (error.isNotErrors())
+           {
                 stacksBuilder = new StacksBuilder(tv.getText().toString());
                 calculator = new Calculator(stacksBuilder.stackinput);
                 tv.setText(calculator.getResult().toString());
-                tvError.setText("");
             }
-
         }
 }
