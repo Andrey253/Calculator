@@ -32,13 +32,8 @@ public class InputChar {
             else if (tvstring.length() == 0)
                 inputString =  "-";
             else
-                try {
-                    Double.toString(Double.parseDouble(tvstring));
-                    inputString = (tvstring.contains("-")) ? tvstring.substring(1,tvstring.length()) : "-" + tvstring;
+                inputString = (tvstring.charAt(0) == '-') ? tvstring.substring(1,tvstring.length()) : "-" + tvstring;
 
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
         }
         else if (textbutton.contains("cl")){
             inputString =  "";

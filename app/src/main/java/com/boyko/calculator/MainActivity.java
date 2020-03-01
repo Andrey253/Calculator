@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tv = findViewById(R.id.textView);
+        tv.setText("");
         tvError = findViewById(R.id.textViewError);
     }
     public void onClickButton(View v)
@@ -44,8 +45,10 @@ public class MainActivity extends AppCompatActivity {
                 stacksBuilder = new StacksBuilder(tv.getText().toString());
                 calculator = new Calculator(stacksBuilder.stackinput);
                String s = String.format("%.12f", calculator.getResult());
+               s = s .replace(",",".");
                while (s.charAt(s.length()-1) == '0') s = s.substring(0,s.length()-1);
-               if (s.charAt(s.length()-1) == ',') s = s.substring(0,s.length()-1);
+               if (s.charAt(s.length()-1) == '.') s = s.substring(0,s.length()-1);
+
                 tv.setText("" + s);
             }
         }
