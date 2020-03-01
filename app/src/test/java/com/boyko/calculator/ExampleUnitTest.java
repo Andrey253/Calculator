@@ -6,6 +6,7 @@ import com.boyko.calculator.Operation.IOperation;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.text.NumberFormat;
 import java.util.Stack;
 
 public class ExampleUnitTest {
@@ -23,11 +24,11 @@ public class ExampleUnitTest {
     @Test
     public void nullException() {
 
-        StacksBuilder stackinput = new StacksBuilder(" 5/0.0");
+        String s = String.format("%.12f", 199999999999999999999.5656);
+            while (s.charAt(s.length()-1) == '0') s = s.substring(0,s.length()-1);
+            if (s.charAt(s.length()-1) == ',') s = s.substring(0,s.length()-1);
 
-        Double d = new Calculator(stackinput.stackinput).getResult();
-
-        Assert.assertEquals("Деление на ноль","Деление на ноль" );
+        Assert.assertEquals("100000000000000.0",s );
     }
     @Test
     public void addition_isCorrect2() {

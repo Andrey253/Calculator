@@ -43,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
            {
                 stacksBuilder = new StacksBuilder(tv.getText().toString());
                 calculator = new Calculator(stacksBuilder.stackinput);
-                tv.setText(calculator.getResult().toString());
+               String s = String.format("%.12f", calculator.getResult());
+               while (s.charAt(s.length()-1) == '0') s = s.substring(0,s.length()-1);
+               if (s.charAt(s.length()-1) == ',') s = s.substring(0,s.length()-1);
+                tv.setText("" + s);
             }
         }
 }
