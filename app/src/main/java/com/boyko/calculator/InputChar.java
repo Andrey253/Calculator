@@ -12,7 +12,7 @@ public class InputChar {
     }
 
     public String getInputString() {
-        return inputString;
+        return inputStringThis;
     }
 
     public int getDif_count_bracket() {
@@ -20,42 +20,47 @@ public class InputChar {
     }
 
     private boolean last_is_operator;
-    private String inputString;
+    private String inputStringThis;
     private int dif_count_bracket;
 
     public InputChar(String tvstring, String textbutton) {
 
-        last_is_operator = Enables.Operator.contains(textbutton.charAt(0)) ? true : false;
-
-        if (textbutton.contains("+/-")){
-
-            if (tvstring.length() == 0)
-                inputString =  "-";
-            else
-                inputString = (tvstring.charAt(0) == '-') ? tvstring.substring(1,tvstring.length()) : "-" + tvstring;
-
+        if (tvstring.equals("Infinity") || tvstring.equals("-Infinity")){
+            inputStringThis = textbutton;
         }
-        else if (textbutton.contains("cl")){
-            inputString =  "";
-        }
-        else if (textbutton.contains(".") && tvstring.length() == 0){
-            inputString =  "0.";
-        }
-        else if (textbutton.contains(".") && Enables.CalcOperator.contains(tvstring.charAt(tvstring.length()-1))){
-            inputString =  tvstring +"0.";
-        }
-        else if (textbutton.contains("back")) {
-            String s = tvstring;
-            inputString = (s.length() > 0) ?  s.substring(0, s.length() - 1) : "";
+        else {
+            last_is_operator = Enables.Operator.contains(textbutton.charAt(0)) ? true : false;
 
-        }
-        else if (enableButtonChar(tvstring, textbutton)){
+            if (textbutton.contains("+/-")){
+                if (tvstring.length() == 0)
+                    inputStringThis =  "-";
+                else
+                    inputStringThis = (tvstring.charAt(0) == '-') ? tvstring.substring(1,tvstring.length()) : "-" + tvstring;
 
-            inputString = (!textbutton.contains(")")) ? tvstring + textbutton : (CloseBracketEnable(tvstring)) ? tvstring + ")" : tvstring;
             }
-        else inputString = tvstring;
+            else if (textbutton.contains("cl")){
+                inputStringThis =  "";
+                if (!MainActivity.stackStatic.empty()) MainActivity.stackStatic.pop();
+            }
+            else if (textbutton.contains(".") && tvstring.length() == 0){
+                inputStringThis =  "0.";
+            }
+            else if (textbutton.contains(".") && Enables.CalcOperator.contains(tvstring.charAt(tvstring.length()-1))){
+                inputStringThis =  tvstring +"0.";
+            }
+            else if (textbutton.contains("back")) {
+                String s = tvstring;
+                inputStringThis = (s.length() > 0) ?  s.substring(0, s.length() - 1) : "";
 
-        CloseBracketEnable(inputString);
+            }
+            else if (enableButtonChar(tvstring, textbutton)){
+
+                inputStringThis = (!textbutton.contains(")")) ? tvstring + textbutton : (CloseBracketEnable(tvstring)) ? tvstring + ")" : tvstring;
+            }
+            else inputStringThis = tvstring;
+
+            CloseBracketEnable(inputStringThis);
+        }
     }
 
     private boolean CloseBracketEnable(String  s) {

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.boyko.calculator.Enum.Enables;
 
+import java.util.Stack;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv;
@@ -17,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
     private StacksBuilder stacksBuilder;
     private Calculator calculator;
     private InputChar inputChar;
-    private String inpStringThis;
+    private String inpStringThis = "";
     private Error error;
+    public static Stack<Double> stackStatic = new Stack<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
             button = (Button) v;
             inputChar = new InputChar(tv.getText().toString(), button.getText().toString());
             inpStringThis =inputChar.getInputString();
+
             tv.setText(inpStringThis);
+            MainActivity.tvError.setText("");
+
         }
     public void onClickEqually(View v)
         {
@@ -42,14 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
           if (error.isNotErrors())
            {
-                stacksBuilder = new StacksBuilder(tv.getText().toString());
-                calculator = new Calculator(stacksBuilder.stackinput);
-               String s = String.format("%.12f", calculator.getResult());
-               s = s .replace(",",".");
-               while (s.charAt(s.length()-1) == '0') s = s.substring(0,s.length()-1);
-               if (s.charAt(s.length()-1) == '.') s = s.substring(0,s.length()-1);
+               stacksBuilder = new StacksBuilder(tv.getText().toString());
+               calculator = new Calculator(stacksBuilder.stackinput);
+               tv.setText("" + calculator.getResult());
 
-                tv.setText("" + s);
             }
         }
 }

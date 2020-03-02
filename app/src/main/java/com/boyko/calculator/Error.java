@@ -22,7 +22,6 @@ public class Error {
             MainActivity.tvError.setText("последний символ оператор, завершите выражение");
         }
         else {
-            MainActivity.tvError.setText("");
             notErrors = true;
 
         }

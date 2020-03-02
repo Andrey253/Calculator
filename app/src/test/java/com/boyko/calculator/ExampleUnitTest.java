@@ -19,6 +19,12 @@ public class ExampleUnitTest {
         Double d = new Calculator(stackinput.stackinput).getResult();
 
         Assert.assertEquals(-5.0, d,0.1);
+    }    @Test
+    public void infinity() {
+
+        InputChar inputChar = new InputChar("Infinity", "0");
+
+        Assert.assertEquals("00", inputChar.getInputString());
     }
 
     @Test
@@ -64,9 +70,9 @@ public class ExampleUnitTest {
     @Test
     public void countBracket() {
 
-        InputChar inputChar = new InputChar("((6-9", ")");
+        InputChar inputChar = new InputChar("(((6-9", ")");
 
-        Assert.assertEquals(1, inputChar.getDif_count_bracket());
+        Assert.assertEquals(2, inputChar.getDif_count_bracket());
     }
     @Test
     public void stringToStack() {

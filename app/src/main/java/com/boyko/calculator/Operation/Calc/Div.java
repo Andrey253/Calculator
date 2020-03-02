@@ -21,9 +21,14 @@ public class Div extends Operation {
 
             }
             else{
-                stDouble.push(double_down / 0.00000001);
+                MainActivity.tvError.setText("Деление на ноль");
+                try {
+                    stDouble.push(double_down / double_up);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-//                MainActivity.tvError.setText("Деление на ноль");
+
             }
     }
 

@@ -25,14 +25,18 @@ public class Calculator {
         while (!stacks.isEmpty()) {
 
             if (stacks.peek().getClass() == Double.class) {
-                stackDouble.push((Double) stacks.pop());
-            } else {
+                    stackDouble.push((Double) stacks.pop());
+            }
+            else {
                 stackOperations.push((Character) stacks.pop());
             }
             calculator();
         }
-        if (stackDouble.size() !=0)
-        this.result = stackDouble.peek();
+        if (stackDouble.size() !=0){
+            this.result = stackDouble.peek();
+
+        }
+
     }
 
     private void calculator() {
