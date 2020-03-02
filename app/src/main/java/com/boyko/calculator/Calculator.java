@@ -36,7 +36,6 @@ public class Calculator {
             this.result = stackDouble.peek();
 
         }
-
     }
 
     private void calculator() {

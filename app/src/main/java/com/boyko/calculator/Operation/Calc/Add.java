@@ -6,7 +6,6 @@ import java.util.Stack;
 
 public class Add extends Operation {
 
-
     public Add(int priority) {
         super(priority);
     }
@@ -22,7 +21,6 @@ public class Add extends Operation {
             e.printStackTrace();
             double_down = 0.0;
         }
-
         stDouble.push(double_down + double_up);
     }
 }

@@ -15,7 +15,6 @@ public class Div extends Operation {
         Double double_up = (Double) stDouble.pop();
         Double double_down = (Double) stDouble.pop();
 
-
             if (double_up != 0.0){
                 stDouble.push(double_down / double_up);
 
@@ -27,8 +26,6 @@ public class Div extends Operation {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-
             }
     }
 

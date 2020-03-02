@@ -1,8 +1,5 @@
 package com.boyko.calculator;
 
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.boyko.calculator.Enum.Enables;
 
 public class InputChar {

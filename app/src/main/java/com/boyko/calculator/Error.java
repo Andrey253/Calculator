@@ -1,13 +1,9 @@
 package com.boyko.calculator;
 
-import android.webkit.SafeBrowsingResponse;
-
 import com.boyko.calculator.Enum.Enables;
 
 public class Error {
     private boolean notErrors;
-    private String inputString;
-    private int dif_count_bracket;
 
     public boolean isNotErrors() {
         return notErrors;
@@ -25,8 +21,5 @@ public class Error {
             notErrors = true;
 
         }
-
     }
-
-
 }

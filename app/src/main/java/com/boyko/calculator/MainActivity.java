@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.boyko.calculator.Enum.Enables;
-
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
           if (error.isNotErrors())
            {
-               stacksBuilder = new StacksBuilder(tv.getText().toString());
+               stacksBuilder = new StacksBuilder(inpStringThis);
                calculator = new Calculator(stacksBuilder.stackinput);
                tv.setText("" + calculator.getResult());
 

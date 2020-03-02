@@ -4,9 +4,7 @@ import java.util.Stack;
 
 public class BracketOpen extends Operation {
     @Override
-    public void exec(Stack stDouble) {
-
-    }
+    public void exec(Stack stDouble) {    }
 
     @Override
     public int getPriority() {

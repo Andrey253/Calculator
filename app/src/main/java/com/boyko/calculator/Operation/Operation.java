@@ -11,9 +11,7 @@ public class Operation implements IOperation {
     }
 
     @Override
-    public void exec(Stack d1) {
-
-    }
+    public void exec(Stack d1) {    }
 
     @Override
     public int getPriority() {
