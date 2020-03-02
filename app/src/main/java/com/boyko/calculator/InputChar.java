@@ -28,8 +28,8 @@ public class InputChar {
         last_is_operator = Enables.Operator.contains(textbutton.charAt(0)) ? true : false;
 
         if (textbutton.contains("+/-")){
-            if (tvstring == "-")  inputString =  "";
-            else if (tvstring.length() == 0)
+
+            if (tvstring.length() == 0)
                 inputString =  "-";
             else
                 inputString = (tvstring.charAt(0) == '-') ? tvstring.substring(1,tvstring.length()) : "-" + tvstring;
@@ -45,7 +45,6 @@ public class InputChar {
             inputString =  tvstring +"0.";
         }
         else if (textbutton.contains("back")) {
-
             String s = tvstring;
             inputString = (s.length() > 0) ?  s.substring(0, s.length() - 1) : "";
 
@@ -77,13 +76,14 @@ public class InputChar {
 
     private boolean enableButtonChar(String tvstring, String textbutton) {
 
-        if (tvstring.length()>0)
-        {
+        if (tvstring.length()>0){
             if (Enables.Button.get(tvstring.charAt(tvstring.length()-1)).contains(textbutton)) {
                 return true;
             }
-        }else return true;
-
+        }
+        else {
+            return !Enables.NotFirst.contains(textbutton);
+        }
         return false;
     }
 }

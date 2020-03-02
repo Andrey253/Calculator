@@ -10,6 +10,7 @@ public class Enables {
     public static List<Character> Numbers;
     public static List<Character> Operator;
     public static List<Character> CalcOperator;
+    public static List<String > NotFirst;
 
     static {
         Button = new HashMap<>();
@@ -61,5 +62,10 @@ public class Enables {
         CalcOperator.add('-');
         CalcOperator.add('*');
         CalcOperator.add('/');
+
+        NotFirst = new ArrayList<>();
+        NotFirst.add("+");
+        NotFirst.add("*");
+        NotFirst.add("/");
     }
 }

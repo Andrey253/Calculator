@@ -24,11 +24,11 @@ public class ExampleUnitTest {
     @Test
     public void nullException() {
 
-        String s = String.format("%.12f", 199999999999999999999.5656);
+        String s = String.format("%.12f", 19999999999.5656);
             while (s.charAt(s.length()-1) == '0') s = s.substring(0,s.length()-1);
             if (s.charAt(s.length()-1) == ',') s = s.substring(0,s.length()-1);
 
-        Assert.assertEquals("100000000000000.0",s );
+        Assert.assertEquals("19999999999,5656",s );
     }
     @Test
     public void addition_isCorrect2() {
